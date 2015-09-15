@@ -1,0 +1,16 @@
+pdo.lo: /home/rong/tools/php-5.5.16/ext/pdo/pdo.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/rong/tools/php-5.5.16/ext/pdo $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/rong/tools/php-5.5.16/ext/pdo/pdo.c -o pdo.lo 
+pdo_dbh.lo: /home/rong/tools/php-5.5.16/ext/pdo/pdo_dbh.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/rong/tools/php-5.5.16/ext/pdo $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/rong/tools/php-5.5.16/ext/pdo/pdo_dbh.c -o pdo_dbh.lo 
+pdo_stmt.lo: /home/rong/tools/php-5.5.16/ext/pdo/pdo_stmt.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/rong/tools/php-5.5.16/ext/pdo $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/rong/tools/php-5.5.16/ext/pdo/pdo_stmt.c -o pdo_stmt.lo 
+pdo_sql_parser.lo: /home/rong/tools/php-5.5.16/ext/pdo/pdo_sql_parser.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/rong/tools/php-5.5.16/ext/pdo $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/rong/tools/php-5.5.16/ext/pdo/pdo_sql_parser.c -o pdo_sql_parser.lo 
+pdo_sqlstate.lo: /home/rong/tools/php-5.5.16/ext/pdo/pdo_sqlstate.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/rong/tools/php-5.5.16/ext/pdo $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/rong/tools/php-5.5.16/ext/pdo/pdo_sqlstate.c -o pdo_sqlstate.lo 
+$(phplibdir)/pdo.la: ./pdo.la
+	$(LIBTOOL) --mode=install cp ./pdo.la $(phplibdir)
+
+./pdo.la: $(shared_objects_pdo) $(PDO_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_pdo) $(PDO_SHARED_LIBADD)
+
